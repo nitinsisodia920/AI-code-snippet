@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevVault - Code Snippet Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">⚡ JINEX x DEV</div>
+        <div class="nav-item active" onclick="app.switchView('all')">
+            📚 All Snippets
+        </div>
+        <div class="nav-item" onclick="app.switchView('favorites')">
+            ⭐ Favorites
+        </div>
+        <div class="nav-item" onclick="app.switchView('recent')">
+            🕐 Recently Used
+        </div>
+        <div class="nav-item" onclick="app.switchView('popular')">
+            🔥 Most Popular
+        </div>
+        
+        <div class="lang-filter">
+            <div class="lang-filter-title">Filter by Language</div>
+            <div id="langChips"></div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Code Snippets</h1>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="app.exportData()">
+                    💾 Export
+                </button>
+                <button class="btn btn-secondary" onclick="app.importData()">
+                    📂 Import
+                </button>
+                <button class="btn btn-primary" onclick="app.openAddModal()">
+                    ➕ New Snippet
+                </button>
+            </div>
+        </div>
+
+        <input type="text" class="search-bar" id="searchInput" placeholder="🔍 Search by title, code, or tags...">
+
+        <div class="stats-grid" id="stats"></div>
+
+        <div class="toolbar">
+            <select id="sortBy" class="form-select">
+                <option value="date">📅 Sort by Date</option>
+                <option value="name">🔤 Sort by Name</option>
+                <option value="language">💻 Sort by Language</option>
+                <option value="usage">🔥 Sort by Usage</option>
+            </select>
+        </div>
+
+        <div class="snippet-masonry" id="snippetGrid"></div>
+    </div>
+
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <h2 class="modal-title" id="modalTitle">Create New Snippet</h2>
+            
+            <div class="form-group">
+                <label class="form-label">Snippet Title</label>
+                <input type="text" class="form-input" id="snippetTitle" placeholder="e.g., Array Sort Helper">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Programming Language</label>
+                <select class="form-select" id="snippetLang">
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="TypeScript">TypeScript</option>
+                    <option value="Java">Java</option>
+                    <option value="C++">C++</option>
+                    <option value="C#">C#</option>
+                    <option value="Go">Go</option>
+                    <option value="Rust">Rust</option>
+                    <option value="PHP">PHP</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="Swift">Swift</option>
+                    <option value="Kotlin">Kotlin</option>
+                    <option value="SQL">SQL</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="Bash">Bash</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Code</label>
+                <textarea class="form-textarea" id="snippetCode" placeholder="Paste your code here..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Tags (comma separated)</label>
+                <input type="text" class="form-input" id="snippetTags" placeholder="e.g., array, sorting, utility">
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-primary" style="flex: 1;" onclick="app.saveSnippet()">💾 Save Snippet</button>
+                <button class="btn btn-secondary" style="flex: 1;" onclick="app.closeModal()">❌ Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js">
+       
+    </script>
+</body>
+</html>
